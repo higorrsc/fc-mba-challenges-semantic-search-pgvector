@@ -1,4 +1,4 @@
-.PHONY: help init-env setup venv install export-req export-req-dev start-db wait-db check-env check-ingest run-chat cli reset-db stop logs lint lint-fix type-check test doctor
+.PHONY: help init-env setup venv install export-req export-req-dev lock start-db wait-db check-env check-ingest run-chat cli reset-db stop logs lint lint-fix type-check test doctor
 
 # =========================
 # Load environment variables
@@ -18,11 +18,13 @@ PYTHON_EXEC=$(VENV_DIR)/Scripts/python.exe
 PIP_EXEC=$(VENV_DIR)/Scripts/pip.exe
 COPY_CMD=copy .env.example .env
 ENV_COPY_HINT=copy .env.example .env
+NULL_DEV = > NUL 2>&1
 else
 PYTHON_EXEC=$(VENV_DIR)/bin/python
 PIP_EXEC=$(VENV_DIR)/bin/pip
 COPY_CMD=cp .env.example .env
 ENV_COPY_HINT=cp .env.example .env
+NULL_DEV = > /dev/null 2>&1
 endif
 
 # =========================
@@ -97,6 +99,7 @@ venv:
 	fi
 
 install:
+	@echo ""
 	@echo "📦 Installing dependencies..."
 	$(INSTALL_DEV)
 
@@ -105,6 +108,7 @@ install:
 # =========================
 
 export-req:
+	@echo ""
 	@echo "📄 Exporting production dependencies..."
 ifneq ($(HAS_UV),)
 	@uv export \
@@ -112,24 +116,33 @@ ifneq ($(HAS_UV),)
 		--no-hashes \
 		--no-annotate \
 		--format requirements.txt \
-		--output-file requirements.txt
+		--output-file requirements.txt \
+		$(NULL_DEV)
 else
 	@$(PIP_EXEC) freeze > requirements.txt
 endif
 	@echo "✅ requirements.txt generated"
 
 export-req-dev:
+	@echo ""
 	@echo "📄 Exporting development dependencies..."
 ifneq ($(HAS_UV),)
 	@uv export \
 		--no-hashes \
 		--no-annotate \
 		--format requirements.txt \
-		--output-file requirements-dev.txt
+		--output-file requirements-dev.txt \
+		$(NULL_DEV)
 else
 	@$(PIP_EXEC) freeze > requirements-dev.txt
 endif
 	@echo "✅ requirements-dev.txt generated"
+
+lock: export-req export-req-dev
+	@echo ""
+	@echo "🔒 Dependency lock complete"
+	@echo "  - requirements.txt"
+	@echo "  - requirements-dev.txt"
 
 
 # =========================
@@ -273,6 +286,7 @@ help:
 	@echo "  make setup         - Create venv and install dependencies"
 	@echo "  make export-req      - Export production dependencies"
 	@echo "  make export-req-dev  - Export development dependencies
+	@echo "  make lock            - Generate both requirements files"
 	@echo ""
 	@echo "Development:"
 	@echo "  make cli           - Start DB, ingest if needed, run chat"

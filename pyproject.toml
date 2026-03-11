@@ -1,0 +1,125 @@
+[project]
+name = "semantic-search-pgvector"
+version = "0.1.0"
+description = "MBA Challenge: Semantic Ingestion and Search with LangChain and Postgres"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "beautifulsoup4>=4.14.3",
+  "langchain>=1.2.10",
+  "langchain-community>=0.4.1",
+  "langchain-google-genai>=4.2.1",
+  "langchain-openai>=1.1.10",
+  "langchain-postgres>=0.0.17",
+  "langchain-text-splitters>=1.1.1",
+  "psycopg[binary]>=3.3.3",
+  "pypdf>=6.7.1",
+  "python-dotenv>=1.2.1",
+]
+
+[dependency-groups]
+dev = [
+  "ipykernel>=7.2.0",
+  "ipython>=9.10.0",
+  "mypy>=1.19.1",
+  "mypy-extensions>=1.1.0",
+  "ruff>=0.15.2",
+]
+
+# ------------------------------------------------------
+# Mypy
+# ------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.13"
+check_untyped_defs = true
+disallow_untyped_defs = false
+explicit_package_bases = true
+ignore_missing_imports = true
+namespace_packages = true
+warn_unused_configs = true
+
+# ------------------------------------------------------
+# Ruff
+# ------------------------------------------------------
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+# E: pycodestyle errors
+# F: Pyflakes
+# I: isort (ordenação de imports)
+# W: pycodestyle warnings
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# ------------------------------------------------------
+# Pylint
+# ------------------------------------------------------
+
+[tool.pylint.main]
+py-version = "3.13"
+jobs = 0
+ignore-patterns = ["test_.*\\.py"]
+extension-pkg-allow-list = ["pyodbc"]
+
+[tool.pylint.messages_control]
+disable = [
+  "too-few-public-methods",
+  "duplicate-code",
+  "missing-module-docstring",
+]
+
+[tool.pylint.basic]
+# Permite:
+# - _ (descartáveis)
+# - i, j, k (loops)
+# - TEntity, TId, TSearch (Type Parameters - PEP 695)
+good-names-rgx = "^(_|i|j|k|T[A-Z][a-zA-Z0-9]*)$"
+argument-naming-style = "snake_case"
+attr-naming-style = "snake_case"
+function-naming-style = "snake_case"
+method-naming-style = "snake_case"
+variable-naming-style = "snake_case"
+class-naming-style = "PascalCase"
+const-naming-style = "UPPER_CASE"
+
+[tool.pylint.design]
+min-public-methods = 1
+max-attributes = 30
+
+[tool.pylint.typecheck]
+ignore-none = true
+ignore-mixin-members = true
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.reports]
+reports = false
+output-format = "colorized"
+
+# ------------------------------------------------------
+# Pytest
+# ------------------------------------------------------
+
+[tool.pytest.ini_options]
+pythonpath = "."
+python_files = "tests.py tests_*.py *tests.py test.py *_test.py test_*.py"
+addopts = "-v --import-mode=importlib"
+testpaths = "tests"
+filterwarnings = [
+  "ignore:Cannot correctly sort tables:sqlalchemy.exc.SAWarning",
+  "ignore:Accessing argon2._version_:DeprecationWarning",
+  "ignore:pandas only supports SQLAlchemy connectable:UserWarning",
+  "ignore:The behavior of DataFrame concatenation:FutureWarning",
+  "ignore::ResourceWarning",
+]

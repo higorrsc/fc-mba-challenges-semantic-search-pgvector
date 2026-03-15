@@ -1,109 +1,109 @@
 {
-    "cSpell.language": "en,pt-BR",
-    "cSpell.words": [
-        "addopts",
-        "beautifulsoup",
-        "dotenv",
-        "elif",
-        "filterwarnings",
-        "gemini",
-        "genai",
-        "healthcheck",
-        "importlib",
-        "ipykernel",
-        "ipython",
-        "isort",
-        "isready",
-        "langchain",
-        "mypy",
-        "openai",
-        "OPENAI",
-        "PGPASSWORD",
-        "pgvector",
-        "postgres",
-        "postgresql",
-        "psql",
-        "psycopg",
-        "pycodestyle",
-        "Pyflakes",
-        "pylint",
-        "Pylint",
-        "pyodbc",
-        "pypdf",
-        "pyproject",
-        "pytest",
-        "Pytest",
-        "pythonpath",
-        "sqlalchemy",
-        "testpaths",
-        "venv"
-    ],
-    // ----------------------------
-    // DOCKER
-    // ----------------------------
-    "docker.languageserver.formatter.ignoreMultilineInstructions": true,
-    // ----------------------------
-    // EDITOR
-    // ----------------------------
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [
-        88
-    ],
-    "editor.tabSize": 4,
+  "cSpell.language": "en,pt-BR",
+  "cSpell.words": [
+    "addopts",
+    "beautifulsoup",
+    "dotenv",
+    "elif",
+    "filterwarnings",
+    "gemini",
+    "genai",
+    "healthcheck",
+    "importlib",
+    "ipykernel",
+    "ipython",
+    "isort",
+    "isready",
+    "langchain",
+    "mypy",
+    "openai",
+    "OPENAI",
+    "PGPASSWORD",
+    "pgvector",
+    "postgres",
+    "postgresql",
+    "psql",
+    "psycopg",
+    "pycodestyle",
+    "Pyflakes",
+    "pylint",
+    "Pylint",
+    "pyodbc",
+    "pypdf",
+    "pyproject",
+    "pytest",
+    "Pytest",
+    "pythonpath",
+    "sqlalchemy",
+    "testpaths",
+    "venv"
+  ],
+  // ----------------------------
+  // DOCKER
+  // ----------------------------
+  "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+  // ----------------------------
+  // EDITOR
+  // ----------------------------
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [
+    88
+  ],
+  "editor.tabSize": 4,
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "always",
+    "source.fixAll.eslint": "always",
+    "source.fixAll.ruff": "explicit",
+    "source.organizeImports": "always",
+    "source.removeUnusedImports": "always",
+    "source.unusedImports": "always"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  // ----------------------------
+  // PYTHON
+  // ----------------------------
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": false,
+  "python.analysis.importFormat": "absolute",
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.defaultInterpreterPath": ".venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.useEnvFile": true,
+  "python.testing.pytestArgs": [
+    "--import-mode=importlib",
+    "-v",
+    "tests"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.codeActionsOnSave": {
-        "source.addMissingImports": "always",
-        "source.fixAll.eslint": "always",
-        "source.fixAll.ruff": "explicit",
-        "source.organizeImports": "always",
-        "source.removeUnusedImports": "always",
-        "source.unusedImports": "always"
+      "source.fixAll.pylance": "always"
     },
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    // ----------------------------
-    // PYTHON
-    // ----------------------------
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.autoSearchPaths": false,
-    "python.analysis.importFormat": "absolute",
-    "python.analysis.inlayHints.callArgumentNames": "all",
-    "python.analysis.typeCheckingMode": "basic",
-    "python.defaultInterpreterPath": ".venv/bin/python",
-    "python.terminal.activateEnvironment": true,
-    "python.terminal.useEnvFile": true,
-    "python.testing.pytestArgs": [
-        "--import-mode=importlib",
-        "-v",
-        "tests"
-    ],
-    "python.testing.pytestEnabled": true,
-    "python.testing.unittestEnabled": false,
-    "[python]": {
-        "diffEditor.ignoreTrimWhitespace": false,
-        "editor.codeActionsOnSave": {
-            "source.fixAll.pylance": "always"
-        },
-        "editor.wordBasedSuggestions": "off"
-    },
-    // ----------------------------
-    // RUFF (Formato + Lint)
-    // ----------------------------
-    "ruff.path": [
-        "uv",
-        "run",
-        "ruff"
-    ],
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    // ----------------------------
-    // SEARCH
-    // ----------------------------
-    "search.exclude": {
-        "**/__pycache__": true,
-        "**/.pytest_cache": true,
-        "**/htmlcov": true,
-        "**/.ruff_cache": true
-    }
+    "editor.wordBasedSuggestions": "off"
+  },
+  // ----------------------------
+  // RUFF (Formato + Lint)
+  // ----------------------------
+  "ruff.path": [
+    "uv",
+    "run",
+    "ruff"
+  ],
+  "editor.defaultFormatter": "charliermarsh.ruff",
+  // ----------------------------
+  // SEARCH
+  // ----------------------------
+  "search.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/htmlcov": true,
+    "**/.ruff_cache": true
+  }
 }

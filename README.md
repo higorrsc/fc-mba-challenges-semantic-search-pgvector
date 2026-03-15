@@ -15,7 +15,7 @@ Este projeto demonstra como construir um sistema de busca semântica (RAG - Retr
 
     ```bash
     git clone https://github.com/higorrsc/fc-mba-challenges-semantic-search-pgvector.git
-    cd semantic-search-pgvector
+    cd fc-mba-challenges-semantic-search-pgvector
     ```
 
 2. **Configure as variáveis de ambiente:**

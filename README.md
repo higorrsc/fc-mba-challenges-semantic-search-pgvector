@@ -37,7 +37,11 @@ Este projeto demonstra como construir um sistema de busca semântica (RAG - Retr
     make init-env
     ```
 
-    *Nota: Você precisa de pelo menos uma chave de API (`OPENAI_API_KEY` ou `GOOGLE_API_KEY`) e configurar o `DATABASE_URL` (ex: `postgresql://postgres:postgres@localhost:5432/rag`).*
+    *Nota: Você precisa de pelo menos uma chave de API (`OPENAI_API_KEY` ou `GOOGLE_API_KEY`) e configurar as demais variáveis do arquivo .env:*
+    - *modelo a ser usado pelo OpenAI (`OPENAI_EMBEDDING_MODEL`) ou pelo Google (`GOOGLE_EMBEDDING_MODEL`) para processamento, é fornecido um modelo default para cada caso.*
+    - *caminho do documento PDF (`PDF_PATH`) que deverá ser processado*
+    - *configurar o `DATABASE_URL` (ex: `postgresql://postgres:postgres@localhost:5432/rag`)*
+    - *configurar o nome da collection a ser criada/usada pelo PGVector (`PG_VECTOR_COLLECTION_NAME`).*
 
 3. **Instale as dependências e prepare o ambiente:**
 

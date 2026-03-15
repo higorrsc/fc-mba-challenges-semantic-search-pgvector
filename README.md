@@ -61,17 +61,47 @@ Você pode executar o projeto passo a passo ou usando um único comando.
     make start-db
     ```
 
+    Ou
+
+    ```bash
+    docker-compose up -d
+    ```
+
 2. **Ingestão de documentos:**
-    Coloque o seu arquivo PDF no diretório raiz (padrão: `document.pdf`) e execute a ingestão:
+    Coloque o seu arquivo PDF no diretório configurado na variável de ambiente (padrão: `./document.pdf`) e execute a ingestão:
 
     ```bash
     make ingest
+    ```
+
+    Ou
+
+    ```bash
+    python -m src.ingest
+    ```
+
+    Ou
+
+    ```bash
+    uv run -m src.ingest
     ```
 
 3. **Inicie o Chat:**
 
     ```bash
     make chat
+    ```
+
+    Ou
+
+    ```bash
+    python -m src.chat
+    ```
+
+    Ou
+
+    ```bash
+    uv run -m src.chat
     ```
 
 ### Opção 2: Comando Único (Workflow Completo)
